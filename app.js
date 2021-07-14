@@ -22,12 +22,9 @@ app.use(morgan('dev'));
 // Bodyparser Middleware
 app.use(bodyParser.json());
 
-// DB Config
-const db = `${MONGO_URI}/${MONGO_DB_NAME}`;
-
 // Connect to Mongo
 mongoose
-  .connect(db, {
+  .connect(MONGO_URI, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true

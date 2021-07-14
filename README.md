@@ -4,7 +4,7 @@
 
 ## Quick Start
 
-Add your MONGO_URI to the default.json file. Make sure you set an env var for that and the jwtSecret on deployment
+Add your MONGO_URI to the .env file. Make sure you set an env var for that and the jwtSecret on deployment
 
 ```bash
 # Install dependencies for server
