@@ -23,7 +23,7 @@ export const addItem = (item: IItem) => (
   dispatch: Function,
   getState: Function
 ) => {
-  console.log(item)
+  //console.log(item)
   axios
     .post('/api/items', item, tokenConfig(getState))
     .then(res =>
