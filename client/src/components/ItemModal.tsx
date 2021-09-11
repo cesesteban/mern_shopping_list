@@ -16,7 +16,7 @@ import { IItemReduxProps, IItemModal, ITarget } from '../types/interfaces';
 const ItemModal = ({ isAuthenticated, addItem }: IItemModal) => {
   const [modal, setModal] = useState(false);
   const [name, setName] = useState('');
-  const [category, setCategory] = useState('1');
+  const [category, setCategory] = useState('Baby');
 
   const handleToggle = () => setModal(!modal);
 
@@ -25,24 +25,24 @@ const ItemModal = ({ isAuthenticated, addItem }: IItemModal) => {
 
   const handleOnSubmit = (e: any) => {
     e.preventDefault();
-    if(name!==''){
-    const newItem = {
-      name,
-      category,
-    };
+    if (name !== '') {
+      const newItem = {
+        name,
+        category,
+      };
 
-    // Add item via addItem action
-    addItem(newItem);
-    // Close modal
-    handleToggle();
-    }else{
-      alert('choose item name')
+      // Add item via addItem action
+      addItem(newItem);
+      // Close modal
+      handleToggle();
+    } else {
+      alert('choose item name');
     }
   };
 
   return (
     <div>
-      {!isAuthenticated ? (
+      {isAuthenticated ? (
         <Button
           color="dark"
           style={{ marginBottom: '2rem' }}
@@ -75,11 +75,18 @@ const ItemModal = ({ isAuthenticated, addItem }: IItemModal) => {
                 placeholder="Select shopping category"
                 onChange={handleChangeCategory}
               >
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
+                <option>Baby</option>
+                <option>Beer, Wine and Spirits</option>
+                <option>
+                  Beverages: tea, coffee, soda, juice, Kool-Aid, hot chocolate,
+                  water, etc.
+                </option>
+                <option>Bread and Bakery</option>
+                <option>Breakfast and Cereal</option>
+                <option>Canned Goods and Soups</option>
+                <option>Condiments/Spices and Bake</option>
+                <option>Cookies, Snacks and Candy</option>
+                <option>Dairy, Eggs and Cheese</option>
               </Input>
               <Button color="dark" style={{ marginTop: '2rem' }} block>
                 Add Item

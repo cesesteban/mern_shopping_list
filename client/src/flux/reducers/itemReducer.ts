@@ -8,12 +8,6 @@ import { IAction, IItem } from '../../types/interfaces';
 
 const initialState = {
   items: [
-    // {name: 'ace', category: '1'},
-    // {name: 'ace', category: '1'},
-    // {name: 'ace', category: '2'},
-    // {name: 'ace', category: '3'},
-    // {name: 'ace', category: '4'},
-    // {name: 'ace', category: '5'},
   ],
   loading: false
 };
@@ -22,7 +16,7 @@ interface IState {
   items: IItem[];
 }
 
-export default function(state: IState = initialState, action: IAction) {
+const itemReducer=(state: IState = initialState, action: IAction) =>{
   switch (action.type) {
     case GET_ITEMS:
       return {
@@ -49,3 +43,4 @@ export default function(state: IState = initialState, action: IAction) {
       return state;
   }
 }
+export default itemReducer

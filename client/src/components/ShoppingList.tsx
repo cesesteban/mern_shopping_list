@@ -15,9 +15,10 @@ const ShoppingList = ({
     getItems();
   }, [getItems]);
 
-  const [categoryGroup, setCategoryGroup] = useState('1');
+  const [categoryGroup, setCategoryGroup] = useState('Baby');
 
-  const handleChangeCategoryGroup = (e: ITarget) => setCategoryGroup(e.target.value);
+  const handleChangeCategoryGroup = (e: ITarget) =>
+    setCategoryGroup(e.target.value);
   const handleDelete = (id: string) => {
     deleteItem(id);
   };
@@ -25,38 +26,53 @@ const ShoppingList = ({
   const { items } = item;
   return (
     <Container>
-      <Input
-        type="select"
-        name="categories"
-        id="categories"
-        placeholder="Select shopping category"
-        onChange={handleChangeCategoryGroup}
-      >
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-      </Input>
+      {isAuthenticated ? (
+        <>
+          <h1>Categories</h1>
+          <Input
+            type="select"
+            name="categories"
+            id="categories"
+            placeholder="Select shopping category"
+            onChange={handleChangeCategoryGroup}
+          >
+            <option>Baby</option>
+            <option>Beer, Wine and Spirits</option>
+            <option>
+              Beverages: tea, coffee, soda, juice, Kool-Aid, hot chocolate,
+              water, etc.
+            </option>
+            <option>Bread and Bakery</option>
+            <option>Breakfast and Cereal</option>
+            <option>Canned Goods and Soups</option>
+            <option>Condiments/Spices and Bake</option>
+            <option>Cookies, Snacks and Candy</option>
+            <option>Dairy, Eggs and Cheese</option>
+          </Input>
+        </>
+      ) : null}
       <ListGroup>
+        <h1>Items</h1>
         <TransitionGroup className="shopping-list">
-          {items.filter(item=>item.category===categoryGroup).map(({ _id, name, category }) => (
-            <CSSTransition key={_id} timeout={500} classNames="fade">
-              <ListGroupItem>
-                {!isAuthenticated ? (
-                  <Button
-                    className="remove-btn"
-                    color="danger"
-                    size="sm"
-                    onClick={() => handleDelete(_id)}
-                  >
-                    &times;
-                  </Button>
-                ) : null}
-                Item: {name}, Category: {category}
-              </ListGroupItem>
-            </CSSTransition>
-          ))}
+          {items
+            .filter((item) => item.category === categoryGroup)
+            .map(({ _id, name, category }) => (
+              <CSSTransition key={_id} timeout={500} classNames="fade">
+                <ListGroupItem>
+                  {isAuthenticated ? (
+                    <Button
+                      className="remove-btn"
+                      color="danger"
+                      size="sm"
+                      onClick={() => handleDelete(_id)}
+                    >
+                      &times;
+                    </Button>
+                  ) : null}
+                  Item: {name}, Category: {category}
+                </ListGroupItem>
+              </CSSTransition>
+            ))}
         </TransitionGroup>
       </ListGroup>
     </Container>
