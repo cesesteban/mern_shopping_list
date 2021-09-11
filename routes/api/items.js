@@ -31,7 +31,7 @@ router.get('/', async (req, res) => {
 router.post('/', auth, async (req, res) => {
   const newItem = new Item({
     name: req.body.name,
-    categoy: req.body.categoy,
+    category: req.body.categoy,
   });
 
   try {
