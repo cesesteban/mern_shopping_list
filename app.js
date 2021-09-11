@@ -4,12 +4,12 @@ import path from 'path';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import morgan from 'morgan';
-import config from './config';
+import config from './config/index.js';
 
 // routes
-import authRoutes from './routes/api/auth';
-import itemRoutes from './routes/api/items';
-import userRoutes from './routes/api/users';
+import authRoutes from './routes/api/auth.js';
+import itemRoutes from './routes/api/items.js';
+import userRoutes from './routes/api/users.js';
 
 const { MONGO_URI, MONGO_DB_NAME } = config;
 
@@ -25,9 +25,9 @@ app.use(bodyParser.json());
 // Connect to Mongo
 mongoose
   .connect(MONGO_URI, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true
+    // useNewUrlParser: true,
+    // useCreateIndex: true,
+    // useUnifiedTopology: true
   }) // Adding new mongo url parser
   .then(() => console.log('MongoDB Connected...'))
   .catch(err => console.log(err));
