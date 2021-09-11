@@ -7,7 +7,14 @@ import {
 import { IAction, IItem } from '../../types/interfaces';
 
 const initialState = {
-  items: [],
+  items: [
+    {name: 'ace', category: '1'},
+    {name: 'ace', category: '1'},
+    {name: 'ace', category: '2'},
+    {name: 'ace', category: '3'},
+    {name: 'ace', category: '4'},
+    {name: 'ace', category: '5'},
+  ],
   loading: false
 };
 

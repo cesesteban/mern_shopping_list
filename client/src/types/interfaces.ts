@@ -66,6 +66,7 @@ export interface IAppNavbar {
 export interface IExistingItem {
   _id: string;
   name: string;
+  category: string;
 }
 
 export interface IItem {

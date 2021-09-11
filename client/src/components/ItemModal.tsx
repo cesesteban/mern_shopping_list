@@ -73,7 +73,7 @@ const ItemModal = ({ isAuthenticated, addItem }: IItemModal) => {
                 name="categories"
                 id="categories"
                 placeholder="Select shopping category"
-                onChange={handleChangeName}
+                onChange={handleChangeCategory}
               >
                 <option>1</option>
                 <option>2</option>
